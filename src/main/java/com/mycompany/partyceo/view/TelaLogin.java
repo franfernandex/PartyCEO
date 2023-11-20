@@ -4,6 +4,7 @@
  */
 package com.mycompany.partyceo.view;
 
+import com.mycompany.partyceo.model.DatabaseSetup;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +18,7 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        DatabaseSetup.createTable();
     }
 
     /**

@@ -4,6 +4,8 @@
  */
 package com.mycompany.partyceo.view;
 
+import com.mycompany.partyceo.model.DatabaseSetup;
+
 
 /**
  *

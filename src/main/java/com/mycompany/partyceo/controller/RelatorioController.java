@@ -15,21 +15,13 @@ import javax.swing.JOptionPane;
  */
 public class RelatorioController {
     
-    public static void NovaBebida(String nome){
-        if (!nome.isEmpty()) {
-            Bebida bebida = new Bebida(nome);
-            Relatorio.cadastrarBebida(bebida);  
-        } else {
-            JOptionPane.showMessageDialog(null, "O nome da bebida está vazio");
-        }
-    }
+//    public static void NovaBebida(String nome){;
+//        if (!nome.isEmpty()) {
+//            Bebida bebida = new Bebida(nome);
+//            Relatorio.cadastrarBebida(bebida);  
+//        } else {
+//            JOptionPane.showMessageDialog(null, "O nome da bebida está vazio");
+//        }
+//    }
     
-    public static void NovoConvidado(String nome){
-        if (!nome.isEmpty()) {
-            Convidado convidado = new Convidado(nome);
-            Relatorio.cadastrarConvidado(convidado);  
-        } else {
-            JOptionPane.showMessageDialog(null, "O nome do convidado está vazio");
-        }
-    }
 }
