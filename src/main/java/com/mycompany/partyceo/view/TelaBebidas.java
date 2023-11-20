@@ -4,10 +4,10 @@
  */
 package com.mycompany.partyceo.view;
 
-import com.mycompany.partyceo.model.Relatorio;
-import com.mycompany.partyceo.controller.RelatorioController;
+import com.mycompany.partyceo.controller.BebidaController;
 import com.mycompany.partyceo.model.Bebida;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 
 
@@ -16,13 +16,24 @@ import javax.swing.*;
  * @author franc
  */
 public class TelaBebidas extends javax.swing.JFrame {
-
+    private int idAtual;
 
     /**
      * Creates new form TelaBebidas
      */
     public TelaBebidas() {
         initComponents();
+        atualizaLista();
+    }
+    
+    private void atualizaLista(){
+        ((DefaultListModel) (listBebida.getModel())).removeAllElements();
+        List<Bebida> bebidas = new ArrayList<>();
+        bebidas = BebidaController.listaBebidas();
+        
+        for(Bebida c : bebidas){
+            ((DefaultListModel)(listBebida.getModel())).addElement(c);
+        }
     }
 
     /**
@@ -46,22 +57,21 @@ public class TelaBebidas extends javax.swing.JFrame {
         listBebida = new javax.swing.JList();
         DefaultListModel modelo = new DefaultListModel();
         listBebida.setModel(modelo);
-        ArrayList<Bebida> bebidas = new ArrayList<Bebida>();
-        bebidas = Relatorio.getBebidas();
+        List<Bebida> bebidas = new ArrayList<Bebida>();
+        bebidas = BebidaController.listaBebidas();
 
         for (Bebida b : bebidas) {
             ((DefaultListModel)(listBebida.getModel()))
-            .addElement(b.getNome(b));
+            .addElement(b);
         };
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        txtPrecoBebida = new javax.swing.JTextField();
+        lblPrecoBebida = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Bebidas");
-        setPreferredSize(new java.awt.Dimension(500, 500));
         setSize(new java.awt.Dimension(500, 500));
-
-        Header.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +133,8 @@ public class TelaBebidas extends javax.swing.JFrame {
             }
         });
 
+        lblPrecoBebida.setText("Preco Unitário");
+
         javax.swing.GroupLayout BodyLayout = new javax.swing.GroupLayout(Body);
         Body.setLayout(BodyLayout);
         BodyLayout.setHorizontalGroup(
@@ -139,12 +151,16 @@ public class TelaBebidas extends javax.swing.JFrame {
                 .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
                         .addComponent(txtNomeBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblNomeBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
-                        .addComponent(btnAddBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(138, 138, 138))))
+                        .addGap(35, 35, 35))
+                    .addGroup(BodyLayout.createSequentialGroup()
+                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAddBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPrecoBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPrecoBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         BodyLayout.setVerticalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +171,11 @@ public class TelaBebidas extends javax.swing.JFrame {
                         .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNomeBebida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNomeBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPrecoBebida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPrecoBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addComponent(btnAddBebida))
                     .addGroup(BodyLayout.createSequentialGroup()
                         .addContainerGap()
@@ -186,45 +206,28 @@ public class TelaBebidas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBebidaActionPerformed
-       
-        int index = listBebida.getSelectedIndex();
-        System.out.println(index);
+    int index = listBebida.getSelectedIndex();
         if (index == -1) {
-            // adicionando a lista
-            String valor = txtNomeBebida.getText();
-            RelatorioController.NovaBebida(valor);
-
-            if(valor.length() != 0){
-                ArrayList<Bebida> bebidas = new ArrayList<Bebida>();
-                bebidas = Relatorio.getBebidas();
-                ((DefaultListModel)(listBebida.getModel()))
-                   .addElement(valor);
-
-
-                txtNomeBebida.setText("");
-                txtNomeBebida.requestFocus(); 
-            }
+            // adicionando no bd
+            String nome = txtNomeBebida.getText();
+            String preco = txtPrecoBebida.getText();
+            BebidaController.cadastraBebida(nome, preco);
+            txtNomeBebida.setText("");
+            txtNomeBebida.requestFocus(); 
+            txtPrecoBebida.setText("");
+            atualizaLista();
         } else {
             //Tirando da tela
             ((DefaultListModel)(listBebida.getModel())).remove(index);
-            //Tirando do Array
-            Relatorio.removerBebida(index);
             
-            // adicionando a lista
-            String valor = txtNomeBebida.getText();
-            RelatorioController.NovaBebida(valor);
-
-            if(valor.length() != 0){
-                ArrayList<Bebida> bebidas = new ArrayList<Bebida>();
-                bebidas = Relatorio.getBebidas();
-                ((DefaultListModel)(listBebida.getModel()))
-                   .addElement(valor);
-
-
-                txtNomeBebida.setText("");
-                txtNomeBebida.requestFocus(); 
-            }
-
+            // adicionando no bd
+            String nome = txtNomeBebida.getText();
+            String preco = txtPrecoBebida.getText();
+            BebidaController.editaBebida(nome, preco, idAtual);
+            txtNomeBebida.setText("");
+            txtNomeBebida.requestFocus(); 
+            txtPrecoBebida.setText("");
+            atualizaLista(); 
         }
     }//GEN-LAST:event_btnAddBebidaActionPerformed
 
@@ -236,14 +239,17 @@ public class TelaBebidas extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int index = listBebida.getSelectedIndex();
-        //Tirando da tela
-        ((DefaultListModel)(listBebida.getModel())).remove(index);
-        //Tirando do Array
-        Relatorio.removerBebida(index);
+        Bebida bebida = (Bebida) ((DefaultListModel)(listBebida.getModel())).get(index);
+        BebidaController.excluiBebida(bebida.getId());
+        atualizaLista();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        txtNomeBebida.setText(listBebida.getSelectedValue());
+        int index = listBebida.getSelectedIndex();
+        Bebida bebida = (Bebida) ((DefaultListModel)(listBebida.getModel())).get(index);
+        txtNomeBebida.setText(bebida.getNome());
+        txtPrecoBebida.setText(Float.toString(bebida.getPreco()));
+        idAtual = bebida.getId();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
@@ -291,8 +297,10 @@ public class TelaBebidas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblNomeBebida;
+    private javax.swing.JLabel lblPrecoBebida;
     private javax.swing.JList<String> listBebida;
     private javax.swing.JTextField txtNomeBebida;
+    private javax.swing.JTextField txtPrecoBebida;
     // End of variables declaration//GEN-END:variables
 
 }

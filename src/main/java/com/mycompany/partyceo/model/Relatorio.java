@@ -30,7 +30,7 @@ public  class  Relatorio {
      
     public static void gerarListaConvidados(){
         for (Convidado c : convidados) {
-            System.out.println(c.getNome(c));
+            System.out.println(c.getNome());
         }
     }
     

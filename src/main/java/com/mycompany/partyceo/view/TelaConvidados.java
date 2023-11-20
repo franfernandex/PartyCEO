@@ -4,10 +4,10 @@
  */
 package com.mycompany.partyceo.view;
 
-import com.mycompany.partyceo.controller.RelatorioController;
+import com.mycompany.partyceo.controller.ConvidadoController;
 import com.mycompany.partyceo.model.Convidado;
-import com.mycompany.partyceo.model.Relatorio;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListModel;
 
 /**
@@ -15,12 +15,24 @@ import javax.swing.DefaultListModel;
  * @author franc
  */
 public class TelaConvidados extends javax.swing.JFrame {
+    private int idAtual;
 
     /**
      * Creates new form TelaCadastroConvidado
      */
     public TelaConvidados() {
         initComponents();
+        atualizaLista();
+    }
+    
+    private void atualizaLista(){
+        ((DefaultListModel) (listConvidado.getModel())).removeAllElements();
+        List<Convidado> convidados = new ArrayList<>();
+        convidados = ConvidadoController.listaConvidados();
+        
+        for(Convidado c : convidados){
+            ((DefaultListModel)(listConvidado.getModel())).addElement(c);
+        }
     }
 
     /**
@@ -42,18 +54,20 @@ public class TelaConvidados extends javax.swing.JFrame {
         listConvidado = new javax.swing.JList();
         DefaultListModel modelo = new DefaultListModel();
         listConvidado.setModel(modelo);
-        ArrayList<Convidado> convidados = new ArrayList<Convidado>();
-        convidados = Relatorio.getConvidados();
+        List<Convidado> convidados = new ArrayList<Convidado>();
+        convidados = ConvidadoController.listaConvidados();
 
         for (Convidado c : convidados) {
             ((DefaultListModel)(listConvidado.getModel()))
-            .addElement(c.getNome(c));
+            .addElement(c);
         };
         txtNomeConvidado = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnAddConvidado = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        txtValorIngresso = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,8 +84,6 @@ public class TelaConvidados extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Convidados");
-
-        Header.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lblLogo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -96,7 +108,7 @@ public class TelaConvidados extends javax.swing.JFrame {
                     .addGroup(HeaderLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnVoltar)))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,47 +145,60 @@ public class TelaConvidados extends javax.swing.JFrame {
             }
         });
 
+        txtValorIngresso.setAutoscrolls(false);
+        txtValorIngresso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorIngressoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Valor do ingresso");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnEditar)
-                        .addGap(25, 25, 25)
-                        .addComponent(btnExcluir))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
+                        .addComponent(btnEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExcluir))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(txtNomeConvidado, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAddConvidado)
-                        .addGap(115, 115, 115))))
+                        .addComponent(btnAddConvidado))
+                    .addComponent(txtValorIngresso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNomeConvidado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtValorIngresso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAddConvidado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar)
                     .addComponent(btnExcluir))
-                .addGap(0, 143, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNomeConvidado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(btnAddConvidado)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 147, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -197,49 +222,37 @@ public class TelaConvidados extends javax.swing.JFrame {
     private void btnAddConvidadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddConvidadoActionPerformed
         
         int index = listConvidado.getSelectedIndex();
-        System.out.println(index);
         if (index == -1) {
-            // adicionando a lista
-            String valor = txtNomeConvidado.getText();
-            RelatorioController.NovoConvidado(valor);
-
-            if(valor.length() != 0){
-                ArrayList<Convidado> convidados = new ArrayList<Convidado>();
-                convidados = Relatorio.getConvidados();
-                ((DefaultListModel)(listConvidado.getModel()))
-                   .addElement(valor);
-
-
-                txtNomeConvidado.setText("");
-                txtNomeConvidado.requestFocus(); 
-            }
+            // adicionando no bd
+            String nome = txtNomeConvidado.getText();
+            String valorIngresso = txtValorIngresso.getText();
+            ConvidadoController.cadastraConvidado(nome, valorIngresso);
+            txtNomeConvidado.setText("");
+            txtNomeConvidado.requestFocus(); 
+            txtValorIngresso.setText("");
+            atualizaLista();
         } else {
             //Tirando da tela
             ((DefaultListModel)(listConvidado.getModel())).remove(index);
-            //Tirando do Array
-            Relatorio.removerConvidado(index);
             
-            // adicionando a lista
-            String valor = txtNomeConvidado.getText();
-            RelatorioController.NovoConvidado(valor);
-
-            if(valor.length() != 0){
-                ArrayList<Convidado> convidados = new ArrayList<Convidado>();
-                convidados = Relatorio.getConvidados();
-                ((DefaultListModel)(listConvidado.getModel()))
-                   .addElement(valor);
-
-
-                txtNomeConvidado.setText("");
-                txtNomeConvidado.requestFocus(); 
-            }
-
+            // adicionando no bd
+            String nome = txtNomeConvidado.getText();
+            String valorIngresso = txtValorIngresso.getText();
+            ConvidadoController.editaConvidado(nome, valorIngresso, idAtual);
+            txtNomeConvidado.setText("");
+            txtNomeConvidado.requestFocus(); 
+            txtValorIngresso.setText("");
+            atualizaLista(); 
         }
         
     }//GEN-LAST:event_btnAddConvidadoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        txtNomeConvidado.setText(listConvidado.getSelectedValue());
+        int index = listConvidado.getSelectedIndex();
+        Convidado convidado = (Convidado) ((DefaultListModel)(listConvidado.getModel())).get(index);
+        txtNomeConvidado.setText(convidado.getNome());
+        txtValorIngresso.setText(Float.toString(convidado.getValorIngresso()));
+        idAtual = convidado.getId();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -250,11 +263,14 @@ public class TelaConvidados extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int index = listConvidado.getSelectedIndex();
-        //Tirando da tela
-        ((DefaultListModel)(listConvidado.getModel())).remove(index);
-        //Tirando do Array
-        Relatorio.removerConvidado(index);
+        Convidado convidado = (Convidado) ((DefaultListModel)(listConvidado.getModel())).get(index);
+        ConvidadoController.excluiConvidado(convidado.getId());
+        atualizaLista();
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void txtValorIngressoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorIngressoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorIngressoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,6 +315,7 @@ public class TelaConvidados extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -306,5 +323,6 @@ public class TelaConvidados extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogo;
     private javax.swing.JList<String> listConvidado;
     private javax.swing.JTextField txtNomeConvidado;
+    private javax.swing.JTextField txtValorIngresso;
     // End of variables declaration//GEN-END:variables
 }
