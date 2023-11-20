@@ -6,10 +6,12 @@ package com.mycompany.partyceo.view;
 
 import com.mycompany.partyceo.controller.BebidaController;
 import com.mycompany.partyceo.controller.ConvidadoController;
+import com.mycompany.partyceo.controller.RelatorioController;
 import com.mycompany.partyceo.model.Bebida;
 import com.mycompany.partyceo.model.Convidado;
 import com.mycompany.partyceo.model.Venda;
 import java.util.List;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -36,10 +38,10 @@ public class TelaVendas extends javax.swing.JFrame {
         Header = new javax.swing.JPanel();
         btnVoltar = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
-        btnVoltar1 = new javax.swing.JButton();
         Body = new javax.swing.JPanel();
         cbBebida = new javax.swing.JComboBox<>();
         cbCliente = new javax.swing.JComboBox<>();
+        cbCliente.setModel(new javax.swing.DefaultComboBoxModel<>());
         cbQtd = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -61,13 +63,6 @@ public class TelaVendas extends javax.swing.JFrame {
         lblLogo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo.setText("Party CEO");
-
-        btnVoltar1.setText("Voltar");
-        btnVoltar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
         Header.setLayout(HeaderLayout);
@@ -93,6 +88,7 @@ public class TelaVendas extends javax.swing.JFrame {
         );
 
         List<Bebida> bebidas = BebidaController.listaBebidas();
+        cbBebida.setModel(new javax.swing.DefaultComboBoxModel<>());
         cbBebida.setModel(new javax.swing.DefaultComboBoxModel<>());
         for(Bebida b : bebidas){
             cbBebida.addItem(b);
@@ -238,14 +234,13 @@ public class TelaVendas extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Body;
     private javax.swing.JPanel Header;
     private javax.swing.JLabel Quantidade;
     private javax.swing.JButton btnVender;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JButton btnVoltar1;
     private javax.swing.JComboBox<Bebida> cbBebida;
     private javax.swing.JComboBox<Convidado> cbCliente;
     private javax.swing.JSpinner cbQtd;
@@ -255,7 +250,8 @@ public class TelaVendas extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogo;
     private javax.swing.JList<Venda> listVenda;
     // End of variables declaration//GEN-END:variables
-}
+
+
     private void cbBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBebidaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbBebidaActionPerformed
@@ -283,3 +279,5 @@ public class TelaVendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbClienteActionPerformed
 
+
+}

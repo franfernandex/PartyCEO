@@ -90,14 +90,6 @@
             <Property name="text" type="java.lang.String" value="Party CEO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnVoltar1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Voltar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVoltarActionPerformed"/>
-          </Events>
-        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="Body">
@@ -175,7 +167,7 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;&gt;()"/>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(Bebida b : bebidas){&#xa;    cbBebida.addItem(b);&#xa;}"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Bebida&gt; bebidas = BebidaController.listaBebidas();"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Bebida&gt; bebidas = BebidaController.listaBebidas();&#xd;&#xa;cbBebida.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;());"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Bebida&gt;"/>
           </AuxValues>
         </Component>
@@ -189,7 +181,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbClienteActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;&gt;()"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;&gt;();&#xd;&#xa;cbCliente.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;());"/>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(Convidado c : convidados){&#xa;    cbCliente.addItem(c);&#xa;}"/>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Convidado&gt; convidados = ConvidadoController.listaConvidados();"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Convidado&gt;"/>
