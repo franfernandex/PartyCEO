@@ -4,6 +4,9 @@
  */
 package com.mycompany.partyceo.view;
 
+import com.mycompany.partyceo.controller.RelatorioController;
+import com.mycompany.partyceo.model.Relatorio;
+
 /**
  *
  * @author franc
@@ -15,6 +18,10 @@ public class TelaRelatorios extends javax.swing.JFrame {
      */
     public TelaRelatorios() {
         initComponents();
+        Relatorio r = RelatorioController.gerarRelatorio();
+        totalVendasIngressos.setText(Float.toString(r.getTotalVendaIngressos()));
+        totalVendasBebidas.setText(Float.toString(r.getTotalVendaBebidas()));
+        totalEmCaixa.setText(Float.toString(r.getTotalEmCaixa()));
     }
 
     /**
@@ -28,9 +35,14 @@ public class TelaRelatorios extends javax.swing.JFrame {
 
         Header = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
+        btnVoltar = new javax.swing.JButton();
         Body = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        totalVendasIngressos = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        totalVendasBebidas = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        totalEmCaixa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,37 +53,77 @@ public class TelaRelatorios extends javax.swing.JFrame {
         lblLogo.setText("Party CEO");
         Header.add(lblLogo, new java.awt.GridBagConstraints());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        });
+        Header.add(btnVoltar, new java.awt.GridBagConstraints());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Total em vendas de ingressos: R$");
+
+        totalVendasIngressos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        totalVendasIngressos.setText("0");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Total em vendas de bebidas: R$");
+
+        totalVendasBebidas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        totalVendasBebidas.setText("0");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setText("Total em caixa: R$");
+
+        totalEmCaixa.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        totalEmCaixa.setText("0");
 
         javax.swing.GroupLayout BodyLayout = new javax.swing.GroupLayout(Body);
         Body.setLayout(BodyLayout);
         BodyLayout.setHorizontalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(BodyLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BodyLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(totalVendasBebidas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(BodyLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(totalEmCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 11, Short.MAX_VALUE))
+                    .addGroup(BodyLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(totalVendasIngressos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         BodyLayout.setVerticalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BodyLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(totalVendasIngressos))
+                .addGap(27, 27, 27)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(totalVendasBebidas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(totalEmCaixa))
+                .addGap(50, 50, 50))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Body, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -84,6 +136,12 @@ public class TelaRelatorios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        TelaPrincipal form = new TelaPrincipal();
+        form.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,8 +181,13 @@ public class TelaRelatorios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Body;
     private javax.swing.JPanel Header;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel totalEmCaixa;
+    private javax.swing.JLabel totalVendasBebidas;
+    private javax.swing.JLabel totalVendasIngressos;
     // End of variables declaration//GEN-END:variables
 }
