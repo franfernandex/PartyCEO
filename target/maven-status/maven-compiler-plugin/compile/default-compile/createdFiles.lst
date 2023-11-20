@@ -3,6 +3,7 @@
 com\mycompany\partyceo\view\TelaConvidados$6.class
 >>>>>>> 2b91debe55fd44568e8dcd91bcaea2d49c8bdffc
 com\mycompany\partyceo\model\Convidado.class
+com\mycompany\partyceo\model\Venda.class
 com\mycompany\partyceo\view\TelaPrincipal$4.class
 com\mycompany\partyceo\view\TelaPrincipal$2.class
 com\mycompany\partyceo\view\TelaVendas$1.class
@@ -16,11 +17,13 @@ com\mycompany\partyceo\model\Bebida.class
 com\mycompany\partyceo\model\Relatorio.class
 com\mycompany\partyceo\view\TelaRelatorios$1.class
 com\mycompany\partyceo\view\TelaPrincipal$5.class
+com\mycompany\partyceo\view\TelaVendas$4.class
 com\mycompany\partyceo\view\TelaBebidas$3.class
 com\mycompany\partyceo\view\TelaRelatorios.class
 com\mycompany\partyceo\view\TelaConvidados.class
 com\mycompany\partyceo\view\TelaConvidados$5.class
 com\mycompany\partyceo\view\TelaLogin$1.class
+com\mycompany\partyceo\view\TelaVendas$2.class
 com\mycompany\partyceo\view\TelaBebidas$1.class
 <<<<<<< HEAD
 com\mycompany\partyceo\view\TelaBebidas.class
@@ -45,4 +48,6 @@ com\mycompany\partyceo\controller\BebidaController.class
 com\mycompany\partyceo\view\TelaConvidados$1.class
 com\mycompany\partyceo\view\TelaVendas.class
 com\mycompany\partyceo\view\TelaPrincipal$1.class
+com\mycompany\partyceo\view\TelaVendas$3.class
 com\mycompany\partyceo\model\Admin.class
+com\mycompany\partyceo\view\TelaRelatorios$2.class

@@ -11,52 +11,38 @@ import java.util.ArrayList;
  * @author franc
  */
 public  class  Relatorio {
-    private Integer idFesta = 0;
-    private static  ArrayList<Bebida> bebidas = new ArrayList<Bebida>();
-    private static  ArrayList<Convidado> convidados = new ArrayList<Convidado>();
+    private float totalVendaIngressos;
+    private float totalVendaBebidas;
+    private float totalEmCaixa;
     
-    public Relatorio(){
-        idFesta = idFesta + 1;
+    public Relatorio(float totalVendaIngressos, float totalVendaBebidas, float totalEmCaixa) {
+        this.totalVendaIngressos = totalVendaIngressos;
+        this.totalVendaBebidas = totalVendaBebidas;
+        this.totalEmCaixa = totalEmCaixa;
     }
 
-    //Convidados
-    public static void cadastrarConvidado(Convidado novoConvidado){
-        convidados.add(novoConvidado);
-    }
-    
-     public static void removerConvidado(int index){
-        convidados.remove(index);
-    }
-     
-    public static void gerarListaConvidados(){
-        for (Convidado c : convidados) {
-            System.out.println(c.getNome());
-        }
-    }
-    
-    public static ArrayList<Convidado> getConvidados(){
-        return convidados;
-    }
-    
-    
-    //Bebidas  
-    public static void cadastrarBebida(Bebida novaBebida){
-        bebidas.add(novaBebida);
-    }
-    
-    public static void removerBebida(int index){
-        bebidas.remove(index);
+    public float getTotalVendaIngressos() {
+        return totalVendaIngressos;
     }
 
-    
-    public static void gerarListaBebidas(){
-        for (Bebida b : bebidas) {
-            System.out.println(b.getNome(b));
-        }
+    public void setTotalVendaIngressos(float totalVendaIngressos) {
+        this.totalVendaIngressos = totalVendaIngressos;
     }
-    
-    public static ArrayList<Bebida> getBebidas(){
-        return bebidas;
+
+    public float getTotalVendaBebidas() {
+        return totalVendaBebidas;
+    }
+
+    public void setTotalVendaBebidas(float totalVendaBebidas) {
+        this.totalVendaBebidas = totalVendaBebidas;
+    }
+
+    public float getTotalEmCaixa() {
+        return totalEmCaixa;
+    }
+
+    public void setTotalEmCaixa(float totalEmCaixa) {
+        this.totalEmCaixa = totalEmCaixa;
     }
     
 }
