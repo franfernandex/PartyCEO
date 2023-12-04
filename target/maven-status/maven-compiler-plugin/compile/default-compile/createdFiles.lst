@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 com\mycompany\partyceo\view\TelaConvidados$6.class
->>>>>>> 2b91debe55fd44568e8dcd91bcaea2d49c8bdffc
 com\mycompany\partyceo\model\Convidado.class
 com\mycompany\partyceo\model\Venda.class
 com\mycompany\partyceo\view\TelaPrincipal$4.class
@@ -9,6 +6,7 @@ com\mycompany\partyceo\view\TelaPrincipal$2.class
 com\mycompany\partyceo\view\TelaVendas$1.class
 com\mycompany\partyceo\view\TelaConvidados$4.class
 com\mycompany\partyceo\view\TelaBebidas$5.class
+com\mycompany\partyceo\view\TelaVendas$5.class
 com\mycompany\partyceo\view\TelaLogin$2.class
 com\mycompany\partyceo\controller\AdminController.class
 com\mycompany\partyceo\view\TelaLogin.class
@@ -25,26 +23,17 @@ com\mycompany\partyceo\view\TelaConvidados$5.class
 com\mycompany\partyceo\view\TelaLogin$1.class
 com\mycompany\partyceo\view\TelaVendas$2.class
 com\mycompany\partyceo\view\TelaBebidas$1.class
-<<<<<<< HEAD
-com\mycompany\partyceo\view\TelaBebidas.class
-com\mycompany\partyceo\view\TelaPrincipal$3.class
-com\mycompany\partyceo\controller\RelatorioController.class
-=======
 com\mycompany\partyceo\model\DatabaseConnection.class
 com\mycompany\partyceo\controller\ConvidadoController.class
 com\mycompany\partyceo\view\TelaBebidas.class
 com\mycompany\partyceo\view\TelaPrincipal$3.class
 com\mycompany\partyceo\controller\RelatorioController.class
 com\mycompany\partyceo\model\DatabaseSetup.class
->>>>>>> 2b91debe55fd44568e8dcd91bcaea2d49c8bdffc
 com\mycompany\partyceo\view\TelaConvidados$3.class
 com\mycompany\partyceo\view\TelaBebidas$2.class
 com\mycompany\partyceo\view\TelaBebidas$4.class
 com\mycompany\partyceo\view\TelaPrincipal.class
-<<<<<<< HEAD
-=======
 com\mycompany\partyceo\controller\BebidaController.class
->>>>>>> 2b91debe55fd44568e8dcd91bcaea2d49c8bdffc
 com\mycompany\partyceo\view\TelaConvidados$1.class
 com\mycompany\partyceo\view\TelaVendas.class
 com\mycompany\partyceo\view\TelaPrincipal$1.class

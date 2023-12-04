@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-C:\Users\franc\OneDrive\Documentos\NetBeansProjects\PartyCEO\src\main\java\com\mycompany\partyceo\view\TelaBebidas.java
-C:\Users\franc\OneDrive\Documentos\NetBeansProjects\PartyCEO\src\main\java\com\mycompany\partyceo\view\TelaConvidados.java
-C:\Users\franc\OneDrive\Documentos\NetBeansProjects\PartyCEO\src\main\java\com\mycompany\partyceo\model\Admin.java
-C:\Users\franc\OneDrive\Documentos\NetBeansProjects\PartyCEO\src\main\java\com\mycompany\partyceo\view\TelaRelatorios.java
-C:\Users\franc\OneDrive\Documentos\NetBeansProjects\PartyCEO\src\main\java\com\mycompany\partyceo\model\Bebida.java
-C:\Users\franc\OneDrive\Documentos\NetBeansProjects\PartyCEO\src\main\java\com\mycompany\partyceo\model\Convidado.java
-C:\Users\franc\OneDrive\Documentos\NetBeansProjects\PartyCEO\src\main\java\com\mycompany\partyceo\model\Relatorio.java
-C:\Users\franc\OneDrive\Documentos\NetBeansProjects\PartyCEO\src\main\java\com\mycompany\partyceo\view\TelaLogin.java
-C:\Users\franc\OneDrive\Documentos\NetBeansProjects\PartyCEO\src\main\java\com\mycompany\partyceo\view\TelaPrincipal.java
-C:\Users\franc\OneDrive\Documentos\NetBeansProjects\PartyCEO\src\main\java\com\mycompany\partyceo\controller\AdminController.java
-C:\Users\franc\OneDrive\Documentos\NetBeansProjects\PartyCEO\src\main\java\com\mycompany\partyceo\view\TelaVendas.java
-C:\Users\franc\OneDrive\Documentos\NetBeansProjects\PartyCEO\src\main\java\com\mycompany\partyceo\controller\RelatorioController.java
-=======
 C:\Users\laura\OneDrive\Desktop\Trabalho Eng de SW\PartyCEO\src\main\java\com\mycompany\partyceo\model\DatabaseConnection.java
 C:\Users\laura\OneDrive\Desktop\Trabalho Eng de SW\PartyCEO\src\main\java\com\mycompany\partyceo\view\TelaBebidas.java
 C:\Users\laura\OneDrive\Desktop\Trabalho Eng de SW\PartyCEO\src\main\java\com\mycompany\partyceo\view\TelaPrincipal.java
@@ -29,4 +15,3 @@ C:\Users\laura\OneDrive\Desktop\Trabalho Eng de SW\PartyCEO\src\main\java\com\my
 C:\Users\laura\OneDrive\Desktop\Trabalho Eng de SW\PartyCEO\src\main\java\com\mycompany\partyceo\model\DatabaseSetup.java
 C:\Users\laura\OneDrive\Desktop\Trabalho Eng de SW\PartyCEO\src\main\java\com\mycompany\partyceo\model\Venda.java
 C:\Users\laura\OneDrive\Desktop\Trabalho Eng de SW\PartyCEO\src\main\java\com\mycompany\partyceo\controller\AdminController.java
->>>>>>> 2b91debe55fd44568e8dcd91bcaea2d49c8bdffc
